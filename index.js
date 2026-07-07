@@ -42,13 +42,20 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    // Set video src dynamically based on screen width
+    const isMobile = window.innerWidth <= 768;
+    introVideo.src = isMobile 
+      ? 'assets/CouplewithCoffee_Animation_mobile.m4v' 
+      : 'assets/CouplewithCoffee_Animation.mp4';
+    introVideo.preload = 'auto';
+
     // Scroll lock during loader
     document.body.style.overflow = 'hidden';
 
     // Try playing video with sound first
     introVideo.muted = false;
     const playPromise = introVideo.play();
-    
+
     if (playPromise !== undefined) {
       playPromise
         .then(() => {
@@ -87,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     introVideo.addEventListener('ended', startExit);
     skipBtn.addEventListener('click', startExit);
     soundToggle.addEventListener('click', toggleSound);
-    
+
     if (replayIntroBtn) {
       replayIntroBtn.addEventListener('click', replayIntro);
     }
@@ -129,15 +136,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function replayIntro() {
     hasExited = false;
-    
+
     // Lock scrolling
     document.body.style.overflow = 'hidden';
-    
+
     // Reset loader display & transitions
     loader.style.display = 'block';
     loader.classList.remove('fade-out', 'entered');
     progressBar.style.width = '0%';
-    
+
     // Hide main page container
     revealContainer.classList.remove('revealed');
     setTimeout(() => {
@@ -147,15 +154,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // Force reflow and restart loader
     void loader.offsetHeight;
     loader.classList.add('entered');
-    
+
+    // Ensure video src is loaded (if replaying)
+    if (!introVideo.src || introVideo.src === '' || !introVideo.getAttribute('src')) {
+      const isMobile = window.innerWidth <= 768;
+      introVideo.src = isMobile 
+        ? 'assets/CouplewithCoffee_Animation_mobile.m4v' 
+        : 'assets/CouplewithCoffee_Animation.mp4';
+      introVideo.preload = 'auto';
+    }
+
     introVideo.currentTime = 0;
     introVideo.muted = false; // user clicked so sound is allowed
     updateSoundToggleLabel(false);
-    
+
     introVideo.play().catch(() => {
       introVideo.muted = true;
       updateSoundToggleLabel(true);
-      introVideo.play().catch(() => {});
+      introVideo.play().catch(() => { });
     });
   }
 
@@ -210,16 +226,16 @@ document.addEventListener('DOMContentLoaded', () => {
   if (quoteForm && formSuccess) {
     quoteForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      
+
       // Perform simple check
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
-      
+
       if (name && email) {
         // Show success block
         formSuccess.style.display = 'block';
         quoteForm.reset();
-        
+
         // Hide success message after 5 seconds
         setTimeout(() => {
           formSuccess.style.display = 'none';
@@ -274,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     bubbleClose.addEventListener('click', hideBubble);
-    
+
     // Close bubble if clicked outside widget
     document.addEventListener('click', (e) => {
       if (!mascotWidget.contains(e.target)) {
