@@ -569,17 +569,14 @@ p {
   border: 1px solid var(--border-light);
 }
 
-/* White rounded wrapper — guarantees the transparent PNG always sits on white with rounded edges */
+/* Widescreen visual wrapper matching the intro video frame aspect ratio */
 .mascot-story-img-wrap {
-  width: 336px; /* 280px × 1.20 = 336px */
-  max-width: 100%;
-  aspect-ratio: 1 / 1; /* Keep it square even on narrow screens */
+  width: 100%;
+  max-width: 420px; /* Cinematic size */
+  aspect-ratio: 16 / 9; /* Keep widescreen aspect ratio */
   border-radius: 12px; /* Rounded corners/edges */
-  background-color: #ffffff;
+  background-color: var(--surface-light);
   border: 1px solid var(--border-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin-bottom: 1.5rem;
   box-shadow: 0 8px 24px rgba(26, 23, 18, 0.06);
   overflow: hidden;
@@ -587,9 +584,9 @@ p {
 }
 
 .mascot-story-img {
-  width: 85%;
-  height: 85%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the 16:9 area cleanly */
   display: block;
 }
 
