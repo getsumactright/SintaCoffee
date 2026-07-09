@@ -33,25 +33,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 1. Video Loader Logic ---
 
   function initVideoLoader() {
-    if (!loader || !introVideo) {
-      // Fallback if elements don't exist
-      if (revealContainer) {
-        revealContainer.style.display = 'block';
-        revealContainer.classList.add('revealed');
-      }
-      return;
+    // Skip loader overlay completely, keeping core logic in the file for later use
+    if (loader) loader.style.display = 'none';
+    if (revealContainer) {
+      revealContainer.style.display = 'block';
+      revealContainer.classList.add('revealed');
     }
+    document.body.style.overflow = '';
+    hasExited = true;
+    return;
+  }
 
-    // Set video src dynamically based on screen width
-    const isMobile = window.innerWidth <= 768;
-    introVideo.src = isMobile 
-      ? 'assets/CouplewithCoffee_Animation_mobile.m4v' 
-      : 'assets/CouplewithCoffee_Animation.mp4';
-    introVideo.preload = 'auto';
-
-    // Scroll lock during loader
-    document.body.style.overflow = 'hidden';
-
+  /*
+    // Keep this logic archived for later use:
     // Try playing video with sound first
     introVideo.muted = false;
     const playPromise = introVideo.play();
@@ -98,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (replayIntroBtn) {
       replayIntroBtn.addEventListener('click', replayIntro);
     }
-  }
+  */
 
   function startExit() {
     if (hasExited) return;
