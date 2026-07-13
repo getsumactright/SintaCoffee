@@ -291,47 +291,10 @@ p {
 }
 
 
-/* --- Instagram Top Bar --- */
-.top-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1001;
-  background-color: var(--surface-dark);
-  text-align: center;
-  padding: 7px 24px;
-}
-
-.top-bar-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: rgba(247, 244, 239, 0.8);
-  text-decoration: none;
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  transition: color 0.3s ease;
-}
-
-.top-bar-link:hover {
-  color: var(--primary-accent);
-}
-
-.top-bar-icon {
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
-}
-
-
 /* --- Header & Navigation --- */
 .main-header {
   position: fixed;
-  top: 30px;
+  top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
@@ -459,7 +422,7 @@ p {
 /* --- Hero Section --- */
 .hero-section {
   position: relative;
-  padding: 170px 24px 64px;
+  padding: 140px 24px 64px;
   min-height: 85vh;
   display: flex;
   align-items: center;
@@ -1404,11 +1367,11 @@ p {
 
   .main-nav {
     position: fixed;
-    top: 30px;
+    top: 0;
     right: -100%;
     width: 80%;
     max-width: 320px;
-    height: calc(100vh - 30px);
+    height: 100vh;
     background-color: var(--surface-light);
     border-left: 1px solid var(--border-light);
     padding: 80px 24px;
@@ -1443,7 +1406,7 @@ p {
   }
 
   .hero-section {
-    padding-top: 150px;
+    padding-top: 120px;
   }
 
   .about-section,
