@@ -1439,7 +1439,7 @@ p {
   }
 
   .hero-section {
-    padding-top: 120px;
+    padding-top: 146px;
   }
 
   .about-section,
@@ -1461,6 +1461,10 @@ p {
   .footer-bottom {
     flex-direction: column;
     text-align: center;
+  }
+
+  .mascot-widget {
+    display: none !important;
   }
 }
 
@@ -1524,5 +1528,14 @@ p {
     animation: none;
     flex-wrap: wrap;
     justify-content: center;
+  }
+}/* --- Touch device hover-state protection --- */
+@media (hover: none) {
+  .btn:hover,
+  .package-card:hover,
+  .enhancement-card:hover,
+  .control-btn:hover,
+  .replay-btn:hover {
+    transform: none !important;
   }
 }
