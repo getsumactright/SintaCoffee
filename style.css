@@ -291,6 +291,39 @@ p {
 }
 
 
+/* --- Header Instagram Follow Bar --- */
+.header-top-bar {
+  background-color: var(--surface-dark);
+  text-align: center;
+  padding: 6px 24px;
+  width: 100%;
+}
+
+.header-top-bar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: rgba(247, 244, 239, 0.75);
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.header-top-bar-link:hover {
+  color: var(--primary-accent);
+}
+
+.header-top-bar-icon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  stroke-width: 2px;
+}
+
 /* --- Header & Navigation --- */
 .main-header {
   position: fixed;
@@ -422,7 +455,7 @@ p {
 /* --- Hero Section --- */
 .hero-section {
   position: relative;
-  padding: 140px 24px 64px;
+  padding: 164px 24px 64px;
   min-height: 85vh;
   display: flex;
   align-items: center;
@@ -1367,11 +1400,11 @@ p {
 
   .main-nav {
     position: fixed;
-    top: 0;
+    top: 26px;
     right: -100%;
     width: 80%;
     max-width: 320px;
-    height: 100vh;
+    height: calc(100vh - 26px);
     background-color: var(--surface-light);
     border-left: 1px solid var(--border-light);
     padding: 80px 24px;
