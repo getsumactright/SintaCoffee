@@ -248,11 +248,74 @@
                 </div>
               </div>
 
+              <!-- Premium Package -->
+              <div class="package-card">
+                <div class="package-header">
+                  <h3 class="package-name">Premium Package</h3>
+                  <div class="package-price">
+                    <span class="price-lbl">Starting at</span>
+                    <span class="price-val">$1,200</span>
+                  </div>
+                  <p class="package-desc">A full-featured bar experience with a dedicated two-barista team for larger, more elevated events.</p>
+                </div>
+                <div class="package-body">
+                  <ul class="package-features">
+                    <li><strong>3 Hours</strong> of service with <strong>unlimited drinks</strong></li>
+                    <li>Comfortably serves up to <strong>200 guests</strong></li>
+                    <li><strong>3 custom signature drinks</strong> crafted for your theme</li>
+                    <li>Full menu: espresso, lattes, matcha, chai, cold brew</li>
+                    <li>Extended syrup library — 8 house-made flavors</li>
+                    <li>Custom printed menu board + branded napkins</li>
+                    <li>Two dedicated baristas on-site</li>
+                  </ul>
+                  <div class="package-meta">
+                    <p class="meta-tag">Large Weddings</p>
+                    <p class="meta-tag">Rehearsal Dinners</p>
+                    <p class="meta-tag">Corporate Galas</p>
+                  </div>
+                </div>
+                <div class="package-footer">
+                  <a href="#quote" class="btn btn-outline" data-package="Premium">Select Package</a>
+                </div>
+              </div>
+
+              <!-- Grand Package -->
+              <div class="package-card popular">
+                <div class="popular-ribbon">Best Value</div>
+                <div class="package-header">
+                  <h3 class="package-name">Grand Package</h3>
+                  <div class="package-price">
+                    <span class="price-lbl">Starting at</span>
+                    <span class="price-val">$1,800</span>
+                  </div>
+                  <p class="package-desc">Our most complete offering — full-day coverage, an affogato bar, and a white-glove consultation from start to finish.</p>
+                </div>
+                <div class="package-body">
+                  <ul class="package-features">
+                    <li><strong>4 Hours</strong> of service — full event coverage</li>
+                    <li>Unlimited guests — no headcount cap</li>
+                    <li><strong>Unlimited custom signature drinks</strong></li>
+                    <li>Full coffee + matcha + chai + affogato bar</li>
+                    <li>Complete premium syrup library + seasonal specials</li>
+                    <li>Custom signage, menu boards, and event consultation</li>
+                    <li>Priority booking + dedicated event coordinator</li>
+                  </ul>
+                  <div class="package-meta">
+                    <p class="meta-tag">Luxury Weddings</p>
+                    <p class="meta-tag">Multi-Venue Events</p>
+                    <p class="meta-tag">VIP Experiences</p>
+                  </div>
+                </div>
+                <div class="package-footer">
+                  <a href="#quote" class="btn btn-primary" data-package="Grand">Select Package</a>
+                </div>
+              </div>
+
             </div>
 
             <!-- Carousel Navigation -->
             <div class="pkg-nav">
-              <button class="pkg-arrow" id="pkgPrev" aria-label="View Essential Package" disabled>
+              <button class="pkg-arrow" id="pkgPrev" aria-label="Previous package" disabled>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
               </button>
               <div class="pkg-indicators" role="tablist" aria-label="Package selection">
@@ -264,8 +327,16 @@
                   <span class="dot-pip" aria-hidden="true"></span>
                   <span class="dot-label">Signature</span>
                 </button>
+                <button class="pkg-dot" data-slide="2" role="tab" aria-selected="false" aria-label="Premium Package">
+                  <span class="dot-pip" aria-hidden="true"></span>
+                  <span class="dot-label">Premium</span>
+                </button>
+                <button class="pkg-dot" data-slide="3" role="tab" aria-selected="false" aria-label="Grand Package">
+                  <span class="dot-pip" aria-hidden="true"></span>
+                  <span class="dot-label">Grand</span>
+                </button>
               </div>
-              <button class="pkg-arrow" id="pkgNext" aria-label="View Signature Package">
+              <button class="pkg-arrow" id="pkgNext" aria-label="Next package">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
               </button>
             </div>
@@ -424,6 +495,8 @@
                     <option value="Not Sure">Not sure yet</option>
                     <option value="Essential">Essential Package (Starting at $600)</option>
                     <option value="Signature">Signature Package (Starting at $850)</option>
+                    <option value="Premium">Premium Package (Starting at $1,200)</option>
+                    <option value="Grand">Grand Package (Starting at $1,800)</option>
                   </select>
                 </div>
 
