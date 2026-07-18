@@ -25,6 +25,8 @@
 
 <body>
 
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
   <!-- Video Intro Loading Overlay -->
   <div id="loader" class="loader-overlay">
     <video id="introVideo" playsinline autoplay class="loader-video"></video>
@@ -92,7 +94,7 @@
       </div>
     </header>
 
-    <main>
+    <main id="main-content">
       <!-- Hero Section -->
       <section class="hero-section">
         <div class="hero-bg-accent"></div>
@@ -115,17 +117,20 @@
               <div class="grid-item item-main">
                 <img
                   src="https://images.squarespace-cdn.com/content/v1/691e1e4b0a5dd46abc2ae373/bc6caccb-9ed9-42f0-8c17-da8ee359d95e/2ndMOHBeniciaMaemephoto2025-77.jpg"
-                  alt="Sinta mobile coffee cart serving guests">
+                  alt="Sinta mobile coffee cart serving guests"
+                  loading="eager" fetchpriority="high" decoding="async">
               </div>
               <div class="grid-item item-sub-1">
                 <img
                   src="https://images.squarespace-cdn.com/content/v1/691e1e4b0a5dd46abc2ae373/6e269db3-ea60-49f5-9ebe-06e720e5f8f9/2ndMOHBeniciaMaemephoto2025-76.jpg"
-                  alt="Barista crafting latte art">
+                  alt="Barista crafting latte art"
+                  loading="lazy" decoding="async">
               </div>
               <div class="grid-item item-sub-2">
                 <img
                   src="https://images.squarespace-cdn.com/content/v1/691e1e4b0a5dd46abc2ae373/6d3c0611-f2c9-494e-8b84-65907db20385/2ndMOHBeniciaMaemephoto2025-78.jpg"
-                  alt="Pouring espresso shot close up">
+                  alt="Pouring espresso shot close up"
+                  loading="lazy" decoding="async">
               </div>
             </div>
           </div>
@@ -140,7 +145,7 @@
               <div class="mascot-story-card">
                 <div class="mascot-story-img-wrap">
                   <img src="assets/intro_frame.png" alt="Maeme and Benicia - Sinta Coffee Co. Owners"
-                    class="mascot-story-img">
+                    class="mascot-story-img" loading="lazy" decoding="async">
                 </div>
                 <div class="speech-bubble-story">
                   <p>“Sinta means beloved. Every cup we brew is a gesture of love for you and your guests.”</p>
@@ -178,68 +183,93 @@
               of all sizes.</p>
           </div>
 
-          <div class="packages-grid">
-            <!-- Essential Package -->
-            <div class="package-card">
-              <div class="package-header">
-                <h3 class="package-name">Essential Package</h3>
-                <div class="package-price">
-                  <span class="price-lbl">Starting at</span>
-                  <span class="price-val">$600</span>
+          <div class="packages-carousel">
+            <div class="packages-track" id="packagesTrack">
+
+              <!-- Essential Package -->
+              <div class="package-card">
+                <div class="package-header">
+                  <h3 class="package-name">Essential Package</h3>
+                  <div class="package-price">
+                    <span class="price-lbl">Starting at</span>
+                    <span class="price-val">$600</span>
+                  </div>
+                  <p class="package-desc">Perfect for intimate gatherings looking for a simple, elevated coffee
+                    experience.</p>
                 </div>
-                <p class="package-desc">Perfect for intimate gatherings looking for a simple, elevated coffee
-                  experience.</p>
-              </div>
-              <div class="package-body">
-                <ul class="package-features">
-                  <li><strong>2 Hours</strong> of full espresso bar service</li>
-                  <li>Ideal for up to <strong>40 guests</strong></li>
-                  <li>Handcrafted café favorites (espresso, latte, Americano, etc.)</li>
-                  <li>Syrups: Classic Vanilla, Caramel, and Chocolate</li>
-                  <li>Whole milk and organic oat milk included</li>
-                  <li>Complete setup, cleanup, and customized event menu</li>
-                </ul>
-                <div class="package-meta">
-                  <p class="meta-tag">Bridal Showers</p>
-                  <p class="meta-tag">Baby Showers</p>
-                  <p class="meta-tag">Employee Appreciation</p>
+                <div class="package-body">
+                  <ul class="package-features">
+                    <li><strong>2 Hours</strong> of full espresso bar service</li>
+                    <li>Ideal for up to <strong>40 guests</strong></li>
+                    <li>Handcrafted café favorites (espresso, latte, Americano, etc.)</li>
+                    <li>Syrups: Classic Vanilla, Caramel, and Chocolate</li>
+                    <li>Whole milk and organic oat milk included</li>
+                    <li>Complete setup, cleanup, and customized event menu</li>
+                  </ul>
+                  <div class="package-meta">
+                    <p class="meta-tag">Bridal Showers</p>
+                    <p class="meta-tag">Baby Showers</p>
+                    <p class="meta-tag">Employee Appreciation</p>
+                  </div>
+                </div>
+                <div class="package-footer">
+                  <a href="#quote" class="btn btn-outline" data-package="Essential">Select Package</a>
                 </div>
               </div>
-              <div class="package-footer">
-                <a href="#quote" class="btn btn-outline" data-package="Essential">Select Package</a>
+
+              <!-- Signature Package -->
+              <div class="package-card popular">
+                <div class="popular-ribbon">Most Popular</div>
+                <div class="package-header">
+                  <h3 class="package-name">Signature Package</h3>
+                  <div class="package-price">
+                    <span class="price-lbl">Starting at</span>
+                    <span class="price-val">$850</span>
+                  </div>
+                  <p class="package-desc">Transform your coffee service into a memorable part of the event itself.</p>
+                </div>
+                <div class="package-body">
+                  <ul class="package-features">
+                    <li><strong>2 Hours</strong> of service with <strong>unlimited drinks</strong></li>
+                    <li>Comfortably serves up to <strong>120 guests</strong></li>
+                    <li><strong>2 custom signature drinks</strong> created for your theme</li>
+                    <li>Includes non-coffee lattes (Matcha, Chai, Hot Chocolate)</li>
+                    <li>Premium vanilla, caramel, and chocolate syrups</li>
+                    <li>Whole milk, oat milk, setup, cleanup, and custom printed menu</li>
+                  </ul>
+                  <div class="package-meta">
+                    <p class="meta-tag">Weddings</p>
+                    <p class="meta-tag">Corporate Events</p>
+                    <p class="meta-tag">Large Celebrations</p>
+                  </div>
+                </div>
+                <div class="package-footer">
+                  <a href="#quote" class="btn btn-primary" data-package="Signature">Select Package</a>
+                </div>
               </div>
+
             </div>
 
-            <!-- Signature Package -->
-            <div class="package-card popular">
-              <div class="popular-ribbon">Most Popular</div>
-              <div class="package-header">
-                <h3 class="package-name">Signature Package</h3>
-                <div class="package-price">
-                  <span class="price-lbl">Starting at</span>
-                  <span class="price-val">$850</span>
-                </div>
-                <p class="package-desc">Transform your coffee service into a memorable part of the event itself.</p>
+            <!-- Carousel Navigation -->
+            <div class="pkg-nav">
+              <button class="pkg-arrow" id="pkgPrev" aria-label="View Essential Package" disabled>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              </button>
+              <div class="pkg-indicators" role="tablist" aria-label="Package selection">
+                <button class="pkg-dot active" data-slide="0" role="tab" aria-selected="true" aria-label="Essential Package">
+                  <span class="dot-pip" aria-hidden="true"></span>
+                  <span class="dot-label">Essential</span>
+                </button>
+                <button class="pkg-dot" data-slide="1" role="tab" aria-selected="false" aria-label="Signature Package">
+                  <span class="dot-pip" aria-hidden="true"></span>
+                  <span class="dot-label">Signature</span>
+                </button>
               </div>
-              <div class="package-body">
-                <ul class="package-features">
-                  <li><strong>2 Hours</strong> of service with <strong>unlimited drinks</strong></li>
-                  <li>Comfortably serves up to <strong>120 guests</strong></li>
-                  <li><strong>2 custom signature drinks</strong> created for your theme</li>
-                  <li>Includes non-coffee lattes (Matcha, Chai, Hot Chocolate)</li>
-                  <li>Premium vanilla, caramel, and chocolate syrups</li>
-                  <li>Whole milk, oat milk, setup, cleanup, and custom printed menu</li>
-                </ul>
-                <div class="package-meta">
-                  <p class="meta-tag">Weddings</p>
-                  <p class="meta-tag">Corporate Events</p>
-                  <p class="meta-tag">Large Celebrations</p>
-                </div>
-              </div>
-              <div class="package-footer">
-                <a href="#quote" class="btn btn-primary" data-package="Signature">Select Package</a>
-              </div>
+              <button class="pkg-arrow" id="pkgNext" aria-label="View Signature Package">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
             </div>
+
           </div>
         </div>
       </section>
@@ -250,19 +280,19 @@
           <div class="gallery-track">
             <div class="gallery-slide"><img
                 src="https://images.squarespace-cdn.com/content/v1/691e1e4b0a5dd46abc2ae373/9b97ddf2-0063-4508-bfbd-c7287e796917/MOHBeniciaMaemephoto2025-559.jpg"
-                alt="Wedding guest enjoying espresso"></div>
+                alt="Wedding guest enjoying espresso" loading="lazy" decoding="async"></div>
             <div class="gallery-slide"><img
                 src="https://images.squarespace-cdn.com/content/v1/691e1e4b0a5dd46abc2ae373/5a778719-7953-4444-98ed-3ec0d8883a7b/2ndMOHBeniciaMaemephoto2025-69.jpg"
-                alt="Sinta coffee cups lined up"></div>
+                alt="Sinta coffee cups lined up" loading="lazy" decoding="async"></div>
             <div class="gallery-slide"><img
                 src="https://images.squarespace-cdn.com/content/v1/691e1e4b0a5dd46abc2ae373/8c7aba0c-0776-470d-b337-4e1309a399a4/IMG_2601.jpeg"
-                alt="Sinta mobile cart set up outdoors"></div>
+                alt="Sinta mobile cart set up outdoors" loading="lazy" decoding="async"></div>
             <div class="gallery-slide"><img
                 src="https://images.squarespace-cdn.com/content/v1/691e1e4b0a5dd46abc2ae373/f7799241-4e31-4b18-a9ae-2d03a18a4595/IMG_8967.jpeg"
-                alt="Cold brew coffee with milk swirl"></div>
+                alt="Cold brew coffee with milk swirl" loading="lazy" decoding="async"></div>
             <div class="gallery-slide"><img
                 src="https://images.squarespace-cdn.com/content/v1/691e1e4b0a5dd46abc2ae373/b4781dd4-61d7-4079-ac59-0402ba1a6f8d/B7F3A02E-9294-4DEF-9CF3-F4B4F6C26067.JPG"
-                alt="Espresso machine brewing shot"></div>
+                alt="Espresso machine brewing shot" loading="lazy" decoding="async"></div>
           </div>
         </div>
       </section>
@@ -338,16 +368,16 @@
                 can create a personalized coffee experience that will make your occasion truly memorable.</p>
               <div class="contact-bullets">
                 <div class="bullet-item">
-                  <span class="icon">📍</span>
+                  <span class="icon" aria-hidden="true">📍</span>
                   <p>Serving weddings and private events throughout Solano County, Napa Valley, Sacramento, and the Bay
                     Area</p>
                 </div>
                 <div class="bullet-item">
-                  <span class="icon">✉️</span>
+                  <span class="icon" aria-hidden="true">✉️</span>
                   <p>sintacoffeeco@gmail.com</p>
                 </div>
                 <div class="bullet-item">
-                  <span class="icon">📞</span>
+                  <span class="icon" aria-hidden="true">📞</span>
                   <p>(707) 853-5340</p>
                 </div>
               </div>
@@ -437,11 +467,11 @@
   </div>
 
   <!-- Floating Mascot Interactive Host Widget -->
-  <div class="mascot-widget" id="mascotWidget">
+  <div class="mascot-widget" id="mascotWidget" role="button" tabindex="0" aria-label="Chat with Maeme and Benicia">
     <div class="mascot-pulse"></div>
     <div class="mascot-avatar-container">
-      <img src="assets/cart-transparent.png" alt="Virtual Host - Sinta Coffee Cart" class="mascot-avatar avatar-cart">
-      <img src="assets/owners.png" alt="Virtual Host - Maeme and Benicia" class="mascot-avatar avatar-owners">
+      <img src="assets/cart-transparent.png" alt="Virtual Host - Sinta Coffee Cart" class="mascot-avatar avatar-cart" loading="lazy" decoding="async">
+      <img src="assets/owners.png" alt="Virtual Host - Maeme and Benicia" class="mascot-avatar avatar-owners" loading="lazy" decoding="async">
     </div>
     <span class="notification-dot">1</span>
     <div class="mascot-bubble" id="mascotBubble">

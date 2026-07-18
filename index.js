@@ -283,6 +283,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+    mascotWidget.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        mascotWidget.click();
+      }
+    });
+
     bubbleClose.addEventListener('click', hideBubble);
 
     // Close bubble if clicked outside widget
@@ -291,5 +298,60 @@ document.addEventListener('DOMContentLoaded', () => {
         hideBubble();
       }
     });
+  }
+
+
+  // --- 7. Packages Carousel ---
+  const pkgTrack = document.getElementById('packagesTrack');
+  const pkgPrevBtn = document.getElementById('pkgPrev');
+  const pkgNextBtn = document.getElementById('pkgNext');
+  const pkgDotBtns = document.querySelectorAll('.pkg-dot');
+
+  if (pkgTrack && pkgPrevBtn && pkgNextBtn) {
+    let currentPkg = 0;
+    const totalPkgs = pkgTrack.children.length;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function goToPkg(index) {
+      currentPkg = Math.max(0, Math.min(index, totalPkgs - 1));
+      pkgTrack.scrollTo({
+        left: currentPkg * pkgTrack.offsetWidth,
+        behavior: prefersReducedMotion ? 'instant' : 'smooth'
+      });
+      syncPkgUI();
+    }
+
+    function syncPkgUI() {
+      pkgPrevBtn.disabled = currentPkg === 0;
+      pkgNextBtn.disabled = currentPkg === totalPkgs - 1;
+      pkgDotBtns.forEach((dot, i) => {
+        const isActive = i === currentPkg;
+        dot.classList.toggle('active', isActive);
+        dot.setAttribute('aria-selected', String(isActive));
+      });
+    }
+
+    pkgPrevBtn.addEventListener('click', () => goToPkg(currentPkg - 1));
+    pkgNextBtn.addEventListener('click', () => goToPkg(currentPkg + 1));
+
+    pkgDotBtns.forEach((dot, i) => {
+      dot.addEventListener('click', () => goToPkg(i));
+    });
+
+    // Sync indicators when user swipes natively
+    let pkgScrollTimer;
+    pkgTrack.addEventListener('scroll', () => {
+      clearTimeout(pkgScrollTimer);
+      pkgScrollTimer = setTimeout(() => {
+        const snapped = Math.round(pkgTrack.scrollLeft / pkgTrack.offsetWidth);
+        if (snapped !== currentPkg) {
+          currentPkg = snapped;
+          syncPkgUI();
+        }
+      }, 80);
+    });
+
+    // Initialize
+    syncPkgUI();
   }
 });
