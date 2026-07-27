@@ -354,4 +354,59 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize
     syncPkgUI();
   }
+
+
+  // --- 8. Reviews Carousel ---
+  const reviewTrack = document.getElementById('reviewsTrack');
+  const reviewPrevBtn = document.getElementById('reviewPrev');
+  const reviewNextBtn = document.getElementById('reviewNext');
+  const reviewDotBtns = document.querySelectorAll('.review-dot');
+
+  if (reviewTrack && reviewPrevBtn && reviewNextBtn) {
+    let currentReview = 0;
+    const totalReviews = reviewTrack.children.length;
+    const prefersReducedMotionReviews = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function goToReview(index) {
+      currentReview = Math.max(0, Math.min(index, totalReviews - 1));
+      reviewTrack.scrollTo({
+        left: currentReview * reviewTrack.offsetWidth,
+        behavior: prefersReducedMotionReviews ? 'instant' : 'smooth'
+      });
+      syncReviewUI();
+    }
+
+    function syncReviewUI() {
+      reviewPrevBtn.disabled = currentReview === 0;
+      reviewNextBtn.disabled = currentReview === totalReviews - 1;
+      reviewDotBtns.forEach((dot, i) => {
+        const isActive = i === currentReview;
+        dot.classList.toggle('active', isActive);
+        dot.setAttribute('aria-selected', String(isActive));
+      });
+    }
+
+    reviewPrevBtn.addEventListener('click', () => goToReview(currentReview - 1));
+    reviewNextBtn.addEventListener('click', () => goToReview(currentReview + 1));
+
+    reviewDotBtns.forEach((dot, i) => {
+      dot.addEventListener('click', () => goToReview(i));
+    });
+
+    // Sync indicators when user swipes natively
+    let reviewScrollTimer;
+    reviewTrack.addEventListener('scroll', () => {
+      clearTimeout(reviewScrollTimer);
+      reviewScrollTimer = setTimeout(() => {
+        const snapped = Math.round(reviewTrack.scrollLeft / reviewTrack.offsetWidth);
+        if (snapped !== currentReview) {
+          currentReview = snapped;
+          syncReviewUI();
+        }
+      }, 80);
+    });
+
+    // Initialize
+    syncReviewUI();
+  }
 });
