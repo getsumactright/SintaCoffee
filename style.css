@@ -1619,6 +1619,23 @@ p {
   text-align: center;
 }
 
+.form-error {
+  display: none;
+  background-color: rgba(43, 62, 80, 0.15);
+  border: 1px solid var(--secondary-accent);
+  color: var(--surface-light);
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.form-error a {
+  color: var(--surface-light);
+  text-decoration: underline;
+}
+
 
 /* --- Footer Section --- */
 .main-footer {

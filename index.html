@@ -629,6 +629,10 @@
 
             <div class="quote-form-container">
               <form class="quote-form" id="quoteForm">
+                <input type="hidden" name="access_key" value="91658b75-0c32-43fe-9f79-e51f154d31e5">
+                <input type="hidden" name="subject" value="New Quote Request — Sinta Coffee Co.">
+                <input type="hidden" name="from_name" value="Sinta Coffee Co. Website">
+                <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
                 <div class="form-row">
                   <div class="form-group">
                     <label for="name">Your Name</label>
@@ -679,9 +683,13 @@
                     placeholder="Tell us about your wedding theme, custom drinks, or general vibe..."></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-block">Send Quote Request</button>
+                <button type="submit" class="btn btn-primary btn-block" id="quoteSubmitBtn">Send Quote Request</button>
                 <div class="form-success" id="formSuccess">
                   🎉 Thank you! Your request has been sent. Maeme & Benicia will get back to you shortly!
+                </div>
+                <div class="form-error" id="formError">
+                  Something went wrong sending your request. Please try again, or reach us directly at
+                  <a href="tel:+17078535340">(707) 853-5340</a>.
                 </div>
               </form>
             </div>

@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const packageSelect = document.getElementById('package');
   const quoteForm = document.getElementById('quoteForm');
   const formSuccess = document.getElementById('formSuccess');
+  const formError = document.getElementById('formError');
+  const quoteSubmitBtn = document.getElementById('quoteSubmitBtn');
 
   const galleryTrack = document.querySelector('.gallery-track');
   const pickupSoonBtn = document.querySelector('.btn-pickup-soon');
@@ -230,25 +232,45 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // --- 5. Quote Form Submission ---
-  if (quoteForm && formSuccess) {
+  // --- 5. Quote Form Submission (Web3Forms) ---
+  if (quoteForm && formSuccess && formError) {
     quoteForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      // Perform simple check
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
+      formSuccess.style.display = 'none';
+      formError.style.display = 'none';
 
-      if (name && email) {
-        // Show success block
-        formSuccess.style.display = 'block';
-        quoteForm.reset();
-
-        // Hide success message after 5 seconds
-        setTimeout(() => {
-          formSuccess.style.display = 'none';
-        }, 5000);
+      if (quoteSubmitBtn) {
+        quoteSubmitBtn.disabled = true;
+        quoteSubmitBtn.textContent = 'Sending...';
       }
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(quoteForm)
+      })
+        .then(response => response.json())
+        .then(result => {
+          if (result.success) {
+            formSuccess.style.display = 'block';
+            quoteForm.reset();
+            setTimeout(() => {
+              formSuccess.style.display = 'none';
+            }, 8000);
+          } else {
+            formError.style.display = 'block';
+          }
+        })
+        .catch(() => {
+          formError.style.display = 'block';
+        })
+        .finally(() => {
+          if (quoteSubmitBtn) {
+            quoteSubmitBtn.disabled = false;
+            quoteSubmitBtn.textContent = 'Send Quote Request';
+          }
+        });
     });
   }
 
