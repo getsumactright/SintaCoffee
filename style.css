@@ -596,6 +596,63 @@ p {
   flex-wrap: wrap;
 }
 
+/* --- "Order For Pickup" coming-soon button --- */
+.btn-pickup-soon {
+  position: relative;
+  overflow: visible;
+}
+
+.btn-pickup-soon .pickup-seal {
+  position: absolute;
+  top: -14px;
+  right: -12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #e08761, var(--primary-accent) 65%, #b4552f 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-8deg);
+  transition: var(--transition-smooth);
+}
+
+.btn-pickup-soon .pickup-seal span {
+  font-family: var(--font-sans);
+  font-size: 0.42rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.btn-pickup-soon .pickup-label {
+  transition: var(--transition-smooth);
+}
+
+.btn-pickup-soon .pickup-label-hover {
+  position: absolute;
+  opacity: 0;
+}
+
+.btn-pickup-soon:hover .pickup-seal,
+.btn-pickup-soon:focus-visible .pickup-seal,
+.btn-pickup-soon.is-active .pickup-seal {
+  transform: rotate(0deg) scale(1.12);
+}
+
+.btn-pickup-soon:hover .pickup-label-default,
+.btn-pickup-soon:focus-visible .pickup-label-default,
+.btn-pickup-soon.is-active .pickup-label-default {
+  opacity: 0;
+}
+
+.btn-pickup-soon:hover .pickup-label-hover,
+.btn-pickup-soon:focus-visible .pickup-label-hover,
+.btn-pickup-soon.is-active .pickup-label-hover {
+  opacity: 1;
+}
+
 /* Asymmetric Hero Visuals */
 .hero-visual {
   width: 100%;
@@ -626,6 +683,18 @@ p {
 
 .grid-item:hover img {
   transform: scale(1.04);
+}
+
+/* These grid cells are much narrower than the source photos (a square
+   group photo and a landscape detail shot), so a default center crop
+   cuts off the people/product. Reposition toward where the actual
+   subject sits in each source image instead. */
+.item-main img {
+  object-position: 20% 55%;
+}
+
+.item-sub-1 img {
+  object-position: 68% 40%;
 }
 
 .item-main {
@@ -804,6 +873,15 @@ p {
   margin: 0 auto;
 }
 
+/* Non-scrolling wrapper — gives the overlay arrows a positioning
+   context that matches the visible card exactly without scrolling
+   away with it (a position:relative ancestor that IS the scroll
+   container carries its absolutely-positioned children along with
+   its scroll offset, which is not what we want here). */
+.packages-track-wrap {
+  position: relative;
+}
+
 .packages-track {
   display: flex;
   overflow-x: scroll;
@@ -815,6 +893,43 @@ p {
 
 .packages-track::-webkit-scrollbar {
   display: none;
+}
+
+.pkg-side-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--surface-dark);
+  background-color: var(--surface-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--surface-dark);
+  z-index: 5;
+  transition: var(--transition-smooth);
+}
+
+.pkg-side-arrow-prev {
+  left: 14px;
+}
+
+.pkg-side-arrow-next {
+  right: 14px;
+}
+
+.pkg-side-arrow:hover:not(:disabled) {
+  background-color: var(--surface-dark);
+  border-color: var(--surface-dark);
+  color: var(--surface-light);
+}
+
+.pkg-side-arrow:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
 }
 
 .packages-track .package-card {
@@ -906,7 +1021,7 @@ p {
 
 .package-card {
   background-color: var(--surface-white);
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--surface-dark);
   border-radius: 12px;
   padding: 2.8rem 2.5rem;
   display: flex;
@@ -921,7 +1036,6 @@ p {
 }
 
 .package-card.popular {
-  border-color: var(--surface-dark);
   background-color: #FAF9F6;
 }
 
@@ -1721,6 +1835,23 @@ p {
 
 /* --- Responsive Adjustments --- */
 
+/* Keep all three hero buttons on one row on desktop — the two-column
+   hero grid only gives .hero-actions ~55-60% of the container width,
+   so the default wrapping gap/padding can still wrap on laptop-width
+   screens even above the 992px mobile breakpoint. */
+@media (min-width: 993px) {
+  .hero-actions {
+    flex-wrap: nowrap;
+    gap: 1rem;
+  }
+
+  .hero-actions .btn {
+    padding-left: 1.7rem;
+    padding-right: 1.7rem;
+    white-space: nowrap;
+  }
+}
+
 @media (max-width: 992px) {
   .hero-container {
     grid-template-columns: 1fr;
@@ -1851,6 +1982,21 @@ p {
     padding: 2.5rem 1.5rem;
   }
 
+  /* Smaller + closer to the edge so the overlay arrows sit in the
+     card's own padding gutter instead of covering feature text. */
+  .pkg-side-arrow {
+    width: 36px;
+    height: 36px;
+  }
+
+  .pkg-side-arrow-prev {
+    left: 8px;
+  }
+
+  .pkg-side-arrow-next {
+    right: 8px;
+  }
+
   .review-card {
     padding: 2.5rem 1.5rem;
   }
@@ -1871,6 +2017,15 @@ p {
   .pkg-dot .dot-label,
   .review-dot .dot-label {
     display: none;
+  }
+
+  /* Slightly smaller seal on narrow phones so it reads as a detail,
+     not a competing focal point next to a wrapped, content-width pill. */
+  .btn-pickup-soon .pickup-seal {
+    width: 28px;
+    height: 28px;
+    top: -11px;
+    right: -9px;
   }
 }
 

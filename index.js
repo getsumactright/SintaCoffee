@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const formSuccess = document.getElementById('formSuccess');
 
   const galleryTrack = document.querySelector('.gallery-track');
+  const pickupSoonBtn = document.querySelector('.btn-pickup-soon');
 
   let hasExited = false;
   const EXIT_LEAD_S = 1.1; // Dissolve 1.1s before video ends to avoid frozen frame
@@ -194,6 +195,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
+  // --- "Order For Pickup" tap feedback (touch has no :hover) ---
+  if (pickupSoonBtn) {
+    let pickupResetTimer;
+    pickupSoonBtn.addEventListener('click', () => {
+      pickupSoonBtn.classList.add('is-active');
+      clearTimeout(pickupResetTimer);
+      pickupResetTimer = setTimeout(() => {
+        pickupSoonBtn.classList.remove('is-active');
+      }, 1800);
+    });
+  }
+
+
   // --- 3. Infinite Gallery Duplication ---
   if (galleryTrack) {
     const slides = Array.from(galleryTrack.children);
@@ -305,6 +319,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const pkgTrack = document.getElementById('packagesTrack');
   const pkgPrevBtn = document.getElementById('pkgPrev');
   const pkgNextBtn = document.getElementById('pkgNext');
+  const pkgSidePrevBtn = document.getElementById('pkgSidePrev');
+  const pkgSideNextBtn = document.getElementById('pkgSideNext');
   const pkgDotBtns = document.querySelectorAll('.pkg-dot');
 
   if (pkgTrack && pkgPrevBtn && pkgNextBtn) {
@@ -322,8 +338,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function syncPkgUI() {
-      pkgPrevBtn.disabled = currentPkg === 0;
-      pkgNextBtn.disabled = currentPkg === totalPkgs - 1;
+      const isFirst = currentPkg === 0;
+      const isLast = currentPkg === totalPkgs - 1;
+      pkgPrevBtn.disabled = isFirst;
+      pkgNextBtn.disabled = isLast;
+      if (pkgSidePrevBtn) pkgSidePrevBtn.disabled = isFirst;
+      if (pkgSideNextBtn) pkgSideNextBtn.disabled = isLast;
       pkgDotBtns.forEach((dot, i) => {
         const isActive = i === currentPkg;
         dot.classList.toggle('active', isActive);
@@ -333,6 +353,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     pkgPrevBtn.addEventListener('click', () => goToPkg(currentPkg - 1));
     pkgNextBtn.addEventListener('click', () => goToPkg(currentPkg + 1));
+    if (pkgSidePrevBtn) pkgSidePrevBtn.addEventListener('click', () => goToPkg(currentPkg - 1));
+    if (pkgSideNextBtn) pkgSideNextBtn.addEventListener('click', () => goToPkg(currentPkg + 1));
 
     pkgDotBtns.forEach((dot, i) => {
       dot.addEventListener('click', () => goToPkg(i));
