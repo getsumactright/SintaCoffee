@@ -7,7 +7,7 @@
   --surface-tonal: #b4b3b0;          /* Pebble Stone Gray */
   --on-surface-light: #1a1712;
   --on-surface-dark: #f7f4ef;
-  --primary-accent: #d46a43;         /* Cinnamon Terracotta */
+  --primary-accent: #4D513D;         /* Deep Olive */
   --secondary-accent: #2b3e50;       /* Deep Steel Blue / Navy */
   --border-light: #e8e5df;
   --border-dark: rgba(247, 244, 239, 0.15);
@@ -401,7 +401,7 @@ p {
 }
 
 .logo-img {
-  height: 38px;
+  height: 52px;
   width: auto;
   object-fit: contain;
   transition: var(--transition-smooth);
