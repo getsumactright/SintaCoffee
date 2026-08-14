@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 6. Mascot Speech Bubble Dialog System ---
   const dialogs = [
-    "Hi! We're Maeme and Benicia. Ready to elevate your event with handcrafted coffee? Click me to learn more!",
+    "Hi! We're Mark and Alexis. Ready to elevate your event with handcrafted coffee? Click me to learn more!",
     "Sinta means beloved in Tagalog. We created Sinta Coffee to bring that feeling of warmth and care to every guest.",
     "We have 20+ years of coffee industry experience. From custom signature lattes to smooth matcha, we handle everything.",
     "We serve Solano County, Napa Valley, Sacramento, and the Bay Area. We bring our full mobile espresso bar directly to you!",

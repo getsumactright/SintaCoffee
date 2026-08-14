@@ -728,8 +728,8 @@ p {
 
 .about-grid {
   display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
-  gap: 3.5rem;
+  grid-template-columns: 1fr 0.85fr 1fr;
+  gap: 2.5rem;
   align-items: center;
 }
 
@@ -765,34 +765,24 @@ p {
   display: block;
 }
 
-.speech-bubble-story {
+.about-quote-card {
   background-color: var(--surface-white);
-  border-radius: 12px;
-  padding: 1.25rem 1.5rem;
-  position: relative;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
   border: 1px solid var(--border-light);
 }
 
-.speech-bubble-story::before {
-  content: '';
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 0 12px 12px;
-  border-style: solid;
-  border-color: transparent transparent var(--surface-white);
-}
-
-.speech-bubble-story p {
+.about-quote-card p {
   font-family: var(--font-serif);
-  font-size: 0.95rem;
+  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
   font-style: italic;
+  line-height: 1.4;
   color: var(--surface-dark);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
-.speech-bubble-story cite {
+.about-quote-card cite {
   font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 500;
@@ -800,6 +790,16 @@ p {
   letter-spacing: 0.1em;
   color: var(--primary-accent);
   display: block;
+}
+
+.section-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--primary-accent);
+  margin-bottom: 1rem;
 }
 
 .section-title {
@@ -822,28 +822,10 @@ p {
   margin-bottom: 1.8rem;
 }
 
-.about-highlight-box {
-  background-color: var(--surface-light);
-  border-radius: 12px;
-  padding: 1.5rem;
-  border: 1px solid var(--border-light);
-}
-
-.about-highlight-box h3 {
-  font-size: 0.85rem;
-  margin-bottom: 0.5rem;
-  color: var(--surface-dark);
-  text-transform: uppercase;
-  font-family: var(--font-sans);
-  letter-spacing: 0.15em;
-  font-weight: 600;
-}
-
-.about-highlight-box p {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  font-family: var(--font-serif);
-  font-style: italic;
+.about-content .section-title {
+  font-size: clamp(1.7rem, 2.6vw, 2.2rem);
+  line-height: 1.3;
+  margin-bottom: 1.1rem;
 }
 
 
@@ -1088,8 +1070,19 @@ p {
   color: var(--text-muted);
 }
 
+.package-plus-note {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--surface-dark);
+  margin-bottom: 1rem;
+}
+
 .package-body {
   flex-grow: 1;
+}
+
+.package-body .package-desc {
+  margin-bottom: 1.5rem;
 }
 
 .package-features {
@@ -1456,6 +1449,13 @@ p {
 .enhancement-card p {
   font-size: 0.95rem;
   color: var(--text-secondary);
+}
+
+.enhancement-card p.card-tagline {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--surface-dark);
+  margin-bottom: 0.4rem;
 }
 
 
@@ -1902,10 +1902,6 @@ p {
     text-align: center;
   }
 
-  .about-highlight-box {
-    text-align: left;
-  }
-
   .quote-grid {
     grid-template-columns: 1fr;
     gap: 3.5rem;
@@ -1992,26 +1988,19 @@ p {
   .mascot-widget {
     display: none !important;
   }
+
+  /* Cards now run long enough (7-8 feature lines) that a 50%-vertical-
+     centered arrow lands mid-list and sits on top of item text instead
+     of in clear space. The bottom .pkg-nav row already duplicates this
+     prev/next control without that risk, so drop the overlay on mobile. */
+  .pkg-side-arrow {
+    display: none;
+  }
 }
 
 @media (max-width: 576px) {
   .package-card {
     padding: 2.5rem 1.5rem;
-  }
-
-  /* Smaller + closer to the edge so the overlay arrows sit in the
-     card's own padding gutter instead of covering feature text. */
-  .pkg-side-arrow {
-    width: 36px;
-    height: 36px;
-  }
-
-  .pkg-side-arrow-prev {
-    left: 8px;
-  }
-
-  .pkg-side-arrow-next {
-    right: 8px;
   }
 
   .review-card {
