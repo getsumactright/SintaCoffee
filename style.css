@@ -596,13 +596,13 @@ p {
   flex-wrap: wrap;
 }
 
-/* --- "Order For Pickup" coming-soon button --- */
-.btn-pickup-soon {
+/* --- "Order For Pickup" badge --- */
+.btn-pickup {
   position: relative;
   overflow: visible;
 }
 
-.btn-pickup-soon .pickup-seal {
+.btn-pickup .pickup-seal {
   position: absolute;
   top: -14px;
   right: -12px;
@@ -617,7 +617,7 @@ p {
   transition: var(--transition-smooth);
 }
 
-.btn-pickup-soon .pickup-seal span {
+.btn-pickup .pickup-seal span {
   font-family: var(--font-sans);
   font-size: 0.42rem;
   font-weight: 500;
@@ -626,30 +626,30 @@ p {
   text-transform: uppercase;
 }
 
-.btn-pickup-soon .pickup-label {
+.btn-pickup .pickup-label {
   transition: var(--transition-smooth);
 }
 
-.btn-pickup-soon .pickup-label-hover {
+.btn-pickup .pickup-label-hover {
   position: absolute;
   opacity: 0;
 }
 
-.btn-pickup-soon:hover .pickup-seal,
-.btn-pickup-soon:focus-visible .pickup-seal,
-.btn-pickup-soon.is-active .pickup-seal {
+.btn-pickup:hover .pickup-seal,
+.btn-pickup:focus-visible .pickup-seal,
+.btn-pickup.is-active .pickup-seal {
   transform: rotate(0deg) scale(1.12);
 }
 
-.btn-pickup-soon:hover .pickup-label-default,
-.btn-pickup-soon:focus-visible .pickup-label-default,
-.btn-pickup-soon.is-active .pickup-label-default {
+.btn-pickup:hover .pickup-label-default,
+.btn-pickup:focus-visible .pickup-label-default,
+.btn-pickup.is-active .pickup-label-default {
   opacity: 0;
 }
 
-.btn-pickup-soon:hover .pickup-label-hover,
-.btn-pickup-soon:focus-visible .pickup-label-hover,
-.btn-pickup-soon.is-active .pickup-label-hover {
+.btn-pickup:hover .pickup-label-hover,
+.btn-pickup:focus-visible .pickup-label-hover,
+.btn-pickup.is-active .pickup-label-hover {
   opacity: 1;
 }
 
@@ -2027,7 +2027,7 @@ p {
 
   /* Slightly smaller seal on narrow phones so it reads as a detail,
      not a competing focal point next to a wrapped, content-width pill. */
-  .btn-pickup-soon .pickup-seal {
+  .btn-pickup .pickup-seal {
     width: 28px;
     height: 28px;
     top: -11px;

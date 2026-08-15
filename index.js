@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const quoteSubmitBtn = document.getElementById('quoteSubmitBtn');
 
   const galleryTrack = document.querySelector('.gallery-track');
-  const pickupSoonBtn = document.querySelector('.btn-pickup-soon');
+  const pickupBtn = document.querySelector('.btn-pickup');
 
   let hasExited = false;
   const EXIT_LEAD_S = 1.1; // Dissolve 1.1s before video ends to avoid frozen frame
@@ -197,19 +197,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  // --- "Order For Pickup" tap feedback (touch has no :hover) ---
-  if (pickupSoonBtn) {
-    let pickupResetTimer;
-    pickupSoonBtn.addEventListener('click', () => {
-      pickupSoonBtn.classList.add('is-active');
-      clearTimeout(pickupResetTimer);
-      pickupResetTimer = setTimeout(() => {
-        pickupSoonBtn.classList.remove('is-active');
-      }, 1800);
-    });
-  }
-
-
   // --- 3. Infinite Gallery Duplication ---
   if (galleryTrack) {
     const slides = Array.from(galleryTrack.children);
@@ -217,6 +204,19 @@ document.addEventListener('DOMContentLoaded', () => {
     slides.forEach(slide => {
       const clone = slide.cloneNode(true);
       galleryTrack.appendChild(clone);
+    });
+  }
+
+
+  // --- "Order For Pickup" tap feedback (touch has no :hover) ---
+  if (pickupBtn) {
+    let pickupResetTimer;
+    pickupBtn.addEventListener('click', () => {
+      pickupBtn.classList.add('is-active');
+      clearTimeout(pickupResetTimer);
+      pickupResetTimer = setTimeout(() => {
+        pickupBtn.classList.remove('is-active');
+      }, 1800);
     });
   }
 
