@@ -373,12 +373,6 @@ p {
   stroke-width: 2px;
 }
 
-.header-top-bar-divider {
-  display: inline-block;
-  margin: 0 10px;
-  color: rgba(247, 244, 239, 0.35);
-}
-
 /* --- Header & Navigation --- */
 .main-header {
   position: fixed;
@@ -1689,7 +1683,6 @@ p {
 
 .social-links {
   display: flex;
-  gap: 1.5rem;
 }
 
 .social-link {
@@ -1707,8 +1700,7 @@ p {
   color: var(--primary-accent);
 }
 
-.insta-icon,
-.tiktok-icon {
+.insta-icon {
   width: 18px;
   height: 18px;
 }
