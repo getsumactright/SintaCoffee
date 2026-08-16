@@ -299,13 +299,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (mascotWidget && mascotBubble && mascotBubbleText && bubbleClose) {
-    // Open bubble automatically 4 seconds after page is revealed
-    const autoShowTimer = setTimeout(() => {
-      if (hasExited) {
-        showBubble();
-      }
-    }, 5500);
-
+    // Bubble only opens when the widget is clicked -- it stays tucked away
+    // as a small icon otherwise, instead of popping open and covering content.
     mascotWidget.addEventListener('click', (e) => {
       // If user clicked the close button, don't open/cycle bubble
       if (e.target.closest('#bubbleClose')) return;
