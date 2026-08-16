@@ -1683,6 +1683,17 @@ p {
 
 .social-links {
   display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.credit-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.6;
+  flex: none;
 }
 
 .social-link {
