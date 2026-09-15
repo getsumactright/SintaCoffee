@@ -104,8 +104,10 @@ p {
   color: #ffffff;
 }
 
+/* Was #be532c — terracotta left over from the old accent, so the main hero CTA changed hue
+   on hover. This is olive darkened; white on it is 10.35:1. */
 .btn-primary:hover {
-  background-color: #be532c;
+  background-color: #3E4231;
   transform: translateY(-2px);
 }
 
@@ -113,6 +115,37 @@ p {
   background-color: transparent;
   color: var(--surface-dark);
   border-color: rgba(26, 23, 18, 0.3);
+}
+
+/* Buttons and links had no designed focus ring anywhere on the site — only form fields did —
+   so they fell back to the browser default. On the filled steel button that default is a dark
+   ring on a dark ground. The offset puts this one on the cream page behind every button. */
+.btn:focus-visible {
+  outline: 2px solid var(--surface-dark);
+  outline-offset: 3px;
+}
+
+.btn-pickup:hover {
+  background-color: #22323f;
+  border-color: #22323f;
+  transform: translateY(-2px);
+}
+
+.btn-pickup .btn-ext {
+  flex: none;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-pickup:hover .btn-ext { transform: translate(2px, -2px); }
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .btn-secondary:hover {
@@ -597,60 +630,16 @@ p {
 }
 
 /* --- "Order For Pickup" badge --- */
+/* Pickup is a different thing to buy from a cart booking, so it gets its own colour rather
+   than a lighter version of the primary. Steel blue was already in the palette and unused.
+   White on #2b3e50 is 11.01:1; the hover is 13.16:1. */
 .btn-pickup {
+  background-color: var(--secondary-accent);
+  color: #ffffff;
+  border-color: var(--secondary-accent);
+  gap: 0.55rem;
   position: relative;
   overflow: visible;
-}
-
-.btn-pickup .pickup-seal {
-  position: absolute;
-  top: -14px;
-  right: -12px;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #e08761, var(--primary-accent) 65%, #b4552f 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: rotate(-8deg);
-  transition: var(--transition-smooth);
-}
-
-.btn-pickup .pickup-seal span {
-  font-family: var(--font-sans);
-  font-size: 0.42rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  color: #fff;
-  text-transform: uppercase;
-}
-
-.btn-pickup .pickup-label {
-  transition: var(--transition-smooth);
-}
-
-.btn-pickup .pickup-label-hover {
-  position: absolute;
-  opacity: 0;
-}
-
-.btn-pickup:hover .pickup-seal,
-.btn-pickup:focus-visible .pickup-seal,
-.btn-pickup.is-active .pickup-seal {
-  transform: rotate(0deg) scale(1.12);
-}
-
-.btn-pickup:hover .pickup-label-default,
-.btn-pickup:focus-visible .pickup-label-default,
-.btn-pickup.is-active .pickup-label-default {
-  opacity: 0;
-}
-
-.btn-pickup:hover .pickup-label-hover,
-.btn-pickup:focus-visible .pickup-label-hover,
-.btn-pickup.is-active .pickup-label-hover {
-  opacity: 1;
 }
 
 /* Asymmetric Hero Visuals */
@@ -2038,13 +2027,7 @@ p {
 
   /* Slightly smaller seal on narrow phones so it reads as a detail,
      not a competing focal point next to a wrapped, content-width pill. */
-  .btn-pickup .pickup-seal {
-    width: 28px;
-    height: 28px;
-    top: -11px;
-    right: -9px;
   }
-}
 
 
 /* --- Animation Keyframes --- */

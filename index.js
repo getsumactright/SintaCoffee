@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const quoteSubmitBtn = document.getElementById('quoteSubmitBtn');
 
   const galleryTrack = document.querySelector('.gallery-track');
-  const pickupBtn = document.querySelector('.btn-pickup');
 
   let hasExited = false;
   const EXIT_LEAD_S = 1.1; // Dissolve 1.1s before video ends to avoid frozen frame
@@ -207,18 +206,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-
-  // --- "Order For Pickup" tap feedback (touch has no :hover) ---
-  if (pickupBtn) {
-    let pickupResetTimer;
-    pickupBtn.addEventListener('click', () => {
-      pickupBtn.classList.add('is-active');
-      clearTimeout(pickupResetTimer);
-      pickupResetTimer = setTimeout(() => {
-        pickupBtn.classList.remove('is-active');
-      }, 1800);
-    });
-  }
 
 
   // --- 4. Package Auto-Selection ---
